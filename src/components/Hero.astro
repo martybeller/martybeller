@@ -5,9 +5,14 @@ interface Props {
 }
 
 const { backgroundImage, photoCredit = 'Photo: Jon Uleis' } = Astro.props;
+const basePath = Astro.site ? new URL(Astro.site.href).pathname.replace(/\/?$/, '/') : '/';
+const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
+const heroBackgroundImage = backgroundImage
+	? withBase(backgroundImage)
+	: withBase('/mb-banner-bg-v1.webp');
 ---
 
-<section class="relative flex min-h-[80vh] flex-col justify-between overflow-hidden bg-cover bg-bottom pb-28 pt-0 px-12" style="background-image: url('/mb-banner-bg-v1.webp')">
+<section class="relative flex min-h-[80vh] flex-col justify-between overflow-hidden bg-cover bg-bottom pb-28 pt-0 px-12" style={`background-image: url('${heroBackgroundImage}')`}>
 	<!-- Gradient overlay -->
 	<div class="pointer-events-none absolute inset-x-0 bottom-0 h-80 bg-gradient-to-t from-black to-transparent"></div>
 

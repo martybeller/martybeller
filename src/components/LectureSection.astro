@@ -4,10 +4,14 @@ interface Props {
 }
 
 const { backgroundImage } = Astro.props;
+const basePath = Astro.site ? new URL(Astro.site.href).pathname.replace(/\/?$/, '/') : '/';
+const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
+const lectureHref = withBase('/lecture');
+const lectureBackgroundImage = backgroundImage ? withBase(backgroundImage) : undefined;
 ---
 
 <section id="lecture" class="mx-auto max-w-max px-12">
-	<a href="/lecture" class="group relative block overflow-hidden rounded-xl bg-white bg-cover bg-center p-8" style={backgroundImage ? `background-image: url(${backgroundImage})` : ''}>
+	<a href={lectureHref} class="group relative block overflow-hidden rounded-xl bg-white bg-cover bg-center p-8" style={lectureBackgroundImage ? `background-image: url('${lectureBackgroundImage}')` : ''}>
 		<div class="relative z-10 flex h-full flex-col justify-between">
 			<h2 class="font-headline text-[72px] font-normal leading-[1] text-white">
 				Guest Artist<br />Lecture

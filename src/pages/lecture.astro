@@ -1,10 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const basePath = Astro.site ? new URL(Astro.site.href).pathname.replace(/\/?$/, '/') : '/';
+const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 ---
 
 <Layout title="Guest Artist Lecture — Marty Beller">
 	<!-- Hero -->
-	<section class="relative flex flex-col justify-between overflow-hidden bg-cover bg-center px-12 pb-28" style="background-image: url('/mb-lecture-bg-v1.webp')">
+	<section class="relative flex flex-col justify-between overflow-hidden bg-cover bg-center px-12 pb-28" style={`background-image: url('${withBase('/mb-lecture-bg-v1.webp')}')`}>
 		<div></div>
 		<h1 class="font-headline text-[120px] font-light leading-[0.83] text-white">GUEST ARTIST<br />LECTURE.</h1>
 	</section>

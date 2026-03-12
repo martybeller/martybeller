@@ -24,14 +24,17 @@ interface Props {
 }
 
 const { sectionTitle, seeAllLink, cards } = Astro.props;
+const basePath = Astro.site ? new URL(Astro.site.href).pathname.replace(/\/?$/, '/') : '/';
+const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
+const resolvedSeeAllLink = seeAllLink ? withBase(seeAllLink) : undefined;
 ---
 
 <div class="flex flex-col gap-8">
 	<!-- Title row -->
 	<div class="flex items-center justify-between">
 		<h2 class="font-headline text-[40px] font-normal leading-[1.2]">{sectionTitle}</h2>
-		{seeAllLink && (
-			<a href={seeAllLink} class="font-headline text-base font-semibold text-white transition hover:text-white/80">
+		{resolvedSeeAllLink && (
+			<a href={resolvedSeeAllLink} class="font-headline text-base font-semibold text-white transition hover:text-white/80">
 				See All
 			</a>
 		)}

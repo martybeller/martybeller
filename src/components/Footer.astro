@@ -1,4 +1,6 @@
 ---
+const basePath = Astro.site ? new URL(Astro.site.href).pathname.replace(/\/?$/, '/') : '/';
+const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 ---
 
 <footer id="contact" class="mx-auto mt-44 max-w-max px-12">
@@ -25,7 +27,7 @@
 
 		<!-- Bottom bar: copyright + social -->
 		<div class="flex items-center justify-between border-t border-white/10 pt-6 pb-8">
-			<p class="font-body text-sm tracking-wide text-white">&copy; {new Date().getFullYear()} Marty Beller. | <a href="/privacy-policy/">Privacy Policy</a></p>
+			<p class="font-body text-sm tracking-wide text-white">&copy; {new Date().getFullYear()} Marty Beller. | <a href={withBase('/privacy-policy/')}>Privacy Policy</a></p>
 			<div class="flex items-center gap-4">
 				<a href="https://www.facebook.com/marty.beller" target="_blank" rel="noopener nofollow noreferrer" class="uppercase font-body text-sm tracking-wide text-white transition hover:text-white/80">Facebook</a>
 				<a href="https://www.linkedin.com/in/marty-beller-58b991a/" target="_blank" rel="noopener nofollow noreferrer" class="uppercase font-body text-sm tracking-wide text-white transition hover:text-white/80">Linkedin</a>
