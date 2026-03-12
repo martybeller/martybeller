@@ -3,32 +3,32 @@ const basePath = Astro.site ? new URL(Astro.site.href).pathname.replace(/\/?$/, 
 const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 ---
 
-<footer id="contact" class="mx-auto mt-44 max-w-max px-12">
-	<div class="flex flex-col gap-14">
+<footer id="contact" class="mx-auto mt-24 max-w-max px-5 sm:mt-32 sm:px-6 lg:mt-44 lg:px-12">
+	<div class="flex flex-col gap-10 sm:gap-12 lg:gap-14">
 		<!-- Contact content -->
 		<div class="flex flex-col gap-6">
-			<h2 class="font-headline text-5xl font-normal leading-tight">Contact.</h2>
-			<div class="flex max-w-max gap-6">
+			<h2 class="font-headline text-4xl font-normal leading-tight sm:text-5xl">Contact.</h2>
+			<div class="flex max-w-max flex-col gap-8 md:flex-row md:gap-6 lg:gap-8">
 				<!-- Guest Artist Lecture contact -->
-				<div class="flex flex-1 flex-col gap-6">
-					<p class="font-headline text-2xl font-normal leading-snug">For Guest Artist Lecture</p>
-					<a href="mailto:MartyBeller@gmail.com" class="font-body text-2xl font-semibold leading-normal transition hover:text-white/80">MartyBeller@gmail.com</a>
+				<div class="flex flex-1 flex-col gap-4 sm:gap-5 lg:gap-6">
+					<p class="font-headline text-xl font-normal leading-snug sm:text-2xl">For Guest Artist Lecture</p>
+					<a href="mailto:MartyBeller@gmail.com" class="font-body text-xl font-semibold leading-normal transition hover:text-white/80 sm:text-2xl">MartyBeller@gmail.com</a>
 				</div>
 				<!-- Film & TV contact -->
-				<div class="flex flex-1 flex-col gap-6">
-					<p class="font-headline text-2xl font-normal leading-snug">
+				<div class="flex flex-1 flex-col gap-4 sm:gap-5 lg:gap-6">
+					<p class="font-headline text-xl font-normal leading-snug sm:text-2xl">
 						For Film &amp; TV Representation<br />Evolution Music Partners
 					</p>
-					<a href="mailto:info@empagency.com" class="font-body text-2xl font-semibold leading-normal transition hover:text-white/80">info@empagency.com</a>
-					<a href="tel:+13237900525" class="font-body text-2xl font-semibold leading-normal transition hover:text-white/80">(323) 790-0525</a>
+					<a href="mailto:info@empagency.com" class="font-body text-xl font-semibold leading-normal transition hover:text-white/80 sm:text-2xl">info@empagency.com</a>
+					<a href="tel:+13237900525" class="font-body text-xl font-semibold leading-normal transition hover:text-white/80 sm:text-2xl">(323) 790-0525</a>
 				</div>
 			</div>
 		</div>
 
 		<!-- Bottom bar: copyright + social -->
-		<div class="flex items-center justify-between border-t border-white/10 pt-6 pb-8">
-			<p class="font-body text-sm tracking-wide text-white">&copy; {new Date().getFullYear()} Marty Beller. | <a href={withBase('/privacy-policy/')}>Privacy Policy</a></p>
-			<div class="flex items-center gap-4">
+		<div class="flex flex-col gap-4 border-t border-white/10 pb-8 pt-6 sm:flex-row sm:items-center sm:justify-between">
+			<p class="font-body text-sm tracking-wide text-white">&copy; {new Date().getFullYear()} Marty Beller | <a href={withBase('/privacy-policy/')}>Privacy Policy</a></p>
+			<div class="flex flex-wrap items-center gap-x-4 gap-y-2">
 				<a href="https://www.facebook.com/marty.beller" target="_blank" rel="noopener nofollow noreferrer" class="uppercase font-body text-sm tracking-wide text-white transition hover:text-white/80">Facebook</a>
 				<a href="https://www.linkedin.com/in/marty-beller-58b991a/" target="_blank" rel="noopener nofollow noreferrer" class="uppercase font-body text-sm tracking-wide text-white transition hover:text-white/80">Linkedin</a>
 				<a href="https://www.instagram.com/martybeller/" target="_blank" rel="noopener nofollow noreferrer" class="uppercase font-body text-sm tracking-wide text-white transition hover:text-white/80">Instagram</a>

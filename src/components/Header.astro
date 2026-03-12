@@ -3,18 +3,79 @@ const basePath = Astro.site ? new URL(Astro.site.href).pathname.replace(/\/?$/, 
 const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 ---
 
-<header class="w-full py-5">
-	<nav class="mx-auto flex max-w-[1344px] items-center justify-between px-6">
-		<a href={withBase('/')} aria-label="Marty Beller - Home">
-			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 180 28" class="h-7 w-auto">
+<header class="w-full py-4 sm:py-5">
+	<nav class="relative mx-auto flex max-w-max flex-col gap-4 px-5 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
+		<div class="flex items-center justify-between gap-4">
+			<a href={withBase('/')} aria-label="Marty Beller - Home">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 180 28" class="h-6 w-auto sm:h-7">
 				<path fill="#fff" d="M0 22.72V0h4.736l6.752 18.656L18.24 0h4.736v22.72H19.52V6.08l-6.112 16.608h-3.84L3.456 6.08v16.64zM32.572 23.104q-2.656 0-4.256-1.216-1.568-1.216-1.568-3.424t1.312-3.424q1.344-1.248 4.128-1.792l5.856-1.12q0-1.984-.928-2.944-.928-.992-2.752-.992-1.632 0-2.56.736-.927.704-1.28 2.112l-3.488-.224q.48-2.56 2.368-4.032 1.92-1.472 4.96-1.472 3.457 0 5.248 1.856 1.824 1.824 1.824 5.152v6.624q0 .607.192.864.224.224.704.224h.608v2.688a8.146 8.146 0 0 1-1.248.096q-1.087 0-1.888-.352a2.33 2.33 0 0 1-1.152-1.152q-.384-.832-.384-2.208l.352.16q-.255 1.12-1.12 1.984-.832.864-2.144 1.376-1.28.48-2.784.48m.544-2.688q1.536 0 2.624-.576a4.4 4.4 0 0 0 1.696-1.664q.609-1.056.608-2.4v-1.088l-4.992.96q-1.537.288-2.176.928-.608.608-.608 1.568 0 1.087.736 1.696.768.576 2.112.576M45.804 22.72V5.696h3.104l.128 4.512-.288-.096q.352-2.304 1.408-3.36 1.088-1.056 2.912-1.056H54.7v3.04h-1.632q-1.28 0-2.144.416a2.83 2.83 0 0 0-1.312 1.28q-.416.864-.416 2.24V22.72zM63.52 22.72q-2.432 0-3.584-1.12t-1.152-3.488V1.696h3.392v16.16q0 1.184.512 1.632t1.568.448h2.432v2.784zM56.192 8.48V5.696h10.496V8.48zM70.733 27.52v-2.784h2.08q.864 0 1.28-.256.415-.256.64-.864l.544-1.408h-1.056L68.077 5.696h3.584l4.672 13.376 4.448-13.376h3.616l-6.784 19.008q-.511 1.472-1.536 2.144-.992.672-2.784.672zM95.594 22.72V0h8.16q4.095 0 6.176 1.472 2.08 1.472 2.08 4.672 0 1.44-.608 2.528-.609 1.088-1.792 1.728-1.152.608-2.752.64l-.032-.128q2.912.064 4.512 1.6 1.632 1.504 1.632 3.968 0 3.105-2.08 4.672-2.08 1.568-5.92 1.568zm3.456-3.104h5.824q2.143 0 3.328-.864 1.215-.895 1.216-2.592 0-1.664-1.216-2.592-1.185-.928-3.328-.928H99.05zm0-9.92h4.64q2.272 0 3.52-.864t1.248-2.432q0-1.664-1.216-2.464-1.185-.832-3.552-.832h-4.64zM124.156 23.104q-2.496 0-4.32-1.088-1.793-1.088-2.784-3.104-.96-2.016-.96-4.704t.96-4.672q.991-2.016 2.784-3.104 1.792-1.12 4.224-1.12 2.304 0 4.064 1.088 1.76 1.056 2.72 3.072.992 2.016.992 4.864v.864h-12.224q.128 2.496 1.312 3.744 1.217 1.248 3.264 1.248 1.504 0 2.496-.704a3.62 3.62 0 0 0 1.376-1.888l3.52.224a7.06 7.06 0 0 1-2.656 3.84q-1.952 1.44-4.768 1.44m-4.544-10.464h8.64q-.16-2.273-1.312-3.36-1.12-1.088-2.88-1.088-1.824 0-3.008 1.152-1.152 1.12-1.44 3.296M139.141 22.72q-1.663 0-2.688-.864-1.023-.864-1.024-2.752V0h3.392v18.784q0 .576.288.864.32.288.896.288h1.344v2.784zM147.86 22.72q-1.663 0-2.688-.864-1.024-.864-1.024-2.752V0h3.392v18.784q0 .576.288.864.32.288.896.288h1.344v2.784zM159.969 23.104q-2.496 0-4.321-1.088-1.791-1.088-2.783-3.104-.96-2.016-.961-4.704 0-2.688.961-4.672.992-2.016 2.783-3.104 1.793-1.12 4.224-1.12 2.304 0 4.064 1.088 1.76 1.056 2.72 3.072.993 2.016.992 4.864v.864h-12.224q.129 2.496 1.312 3.744 1.216 1.248 3.265 1.248 1.503 0 2.496-.704a3.62 3.62 0 0 0 1.375-1.888l3.521.224a7.06 7.06 0 0 1-2.657 3.84q-1.951 1.44-4.767 1.44m-4.545-10.464h8.64q-.159-2.273-1.311-3.36-1.12-1.088-2.881-1.088-1.824 0-3.007 1.152-1.152 1.12-1.441 3.296M171.085 22.72V5.696h3.104l.129 4.512-.289-.096q.352-2.304 1.409-3.36 1.088-1.056 2.912-1.056h1.632v3.04h-1.632q-1.28 0-2.144.416a2.83 2.83 0 0 0-1.313 1.28q-.416.864-.416 2.24V22.72z"/>
-			</svg>
-		</a>
-		<div class="flex items-center gap-2">
-			<a href={withBase('/work/')} class="px-4 py-2 font-headline text-base text-white/90 transition hover:text-white">Music</a>
-			<a href={withBase('/lecture')} class="px-4 py-2 font-headline text-base text-white/90 transition hover:text-white">Guest Artist Lecture</a>
-			<a href={withBase('/bio')} class="px-4 py-2 font-headline text-base text-white/90 transition hover:text-white">Bio</a>
-			<a href="#contact" class="rounded-sm border border-white px-4 py-2 font-headline text-base text-white transition hover:bg-white hover:text-black">Contact</a>
+				</svg>
+			</a>
+			<button
+				type="button"
+				class="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white transition hover:border-white/40 hover:bg-white/10 lg:hidden"
+				aria-expanded="false"
+				aria-controls="site-menu"
+				aria-label="Toggle navigation menu"
+				data-nav-toggle
+			>
+				<span class="sr-only">Toggle navigation</span>
+				<span class="relative block h-4 w-5">
+					<span class="absolute left-0 top-0 block h-px w-5 bg-current transition-transform duration-200" data-nav-line="top"></span>
+					<span class="absolute left-0 top-1.5 block h-px w-5 bg-current transition-opacity duration-200" data-nav-line="middle"></span>
+					<span class="absolute left-0 top-3 block h-px w-5 bg-current transition-transform duration-200" data-nav-line="bottom"></span>
+				</span>
+			</button>
+		</div>
+		<div
+			id="site-menu"
+			class="hidden flex-col items-stretch gap-1 rounded-2xl border border-white/10 bg-black/85 p-3 backdrop-blur-md lg:flex lg:flex-row lg:items-center lg:gap-x-1 lg:gap-y-2 lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:backdrop-blur-none"
+			data-nav-menu
+		>
+			<a href={withBase('/work/')} class="block w-full px-3 py-2 text-left font-headline text-sm text-white/90 transition hover:text-white sm:px-4 sm:text-base lg:w-auto">Music</a>
+			<a href={withBase('/lecture/')} class="block w-full px-3 py-2 text-left font-headline text-sm text-white/90 transition hover:text-white sm:px-4 sm:text-base lg:w-auto">Guest Artist Lecture</a>
+			<a href={withBase('/bio/')} class="block w-full px-3 py-2 text-left font-headline text-sm text-white/90 transition hover:text-white sm:px-4 sm:text-base lg:w-auto">Bio</a>
+			<a href="#contact" class="block w-full px-3 py-2 text-left font-headline text-sm text-white/90 transition hover:text-white sm:px-4 sm:text-base lg:w-auto">Contact</a>
 		</div>
 	</nav>
 </header>
+
+<script is:inline>
+	const navToggle = document.querySelector('[data-nav-toggle]');
+	const navMenu = document.querySelector('[data-nav-menu]');
+	const navLinks = navMenu?.querySelectorAll('a') ?? [];
+	const topLine = navToggle?.querySelector('[data-nav-line="top"]');
+	const middleLine = navToggle?.querySelector('[data-nav-line="middle"]');
+	const bottomLine = navToggle?.querySelector('[data-nav-line="bottom"]');
+
+	const setMenuState = (isOpen) => {
+		navToggle?.setAttribute('aria-expanded', String(isOpen));
+		navMenu?.classList.toggle('hidden', !isOpen);
+		topLine?.classList.toggle('translate-y-[6px]', isOpen);
+		topLine?.classList.toggle('rotate-45', isOpen);
+		middleLine?.classList.toggle('opacity-0', isOpen);
+		bottomLine?.classList.toggle('-translate-y-[6px]', isOpen);
+		bottomLine?.classList.toggle('-rotate-45', isOpen);
+	};
+
+	setMenuState(false);
+
+	navToggle?.addEventListener('click', () => {
+		const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+		setMenuState(!isOpen);
+	});
+
+	navLinks.forEach((link) => {
+		link.addEventListener('click', () => {
+			if (window.innerWidth < 1024) {
+				setMenuState(false);
+			}
+		});
+	});
+
+	window.addEventListener('resize', () => {
+		if (window.innerWidth >= 1024) {
+			setMenuState(false);
+		}
+	});
+</script>

@@ -5,9 +5,13 @@ import Footer from '../components/Footer.astro';
 
 interface Props {
 	title?: string;
+	description?: string;
 }
 
-const { title = 'Marty Beller' } = Astro.props;
+const {
+	title = 'Marty Beller',
+	description = 'Hear work from musician Marty Beller, and his newest projects.',
+} = Astro.props;
 const basePath = Astro.site ? new URL(Astro.site.href).pathname.replace(/\/?$/, '/') : '/';
 const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 ---
@@ -17,13 +21,27 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-KMBVLQ7B');</script>
+		<script is:inline>
+			const windowWithDataLayer = /** @type {Window & { dataLayer: Array<Record<string, unknown>> }} */ (window);
+			windowWithDataLayer.dataLayer = windowWithDataLayer.dataLayer || [];
+			windowWithDataLayer.dataLayer.push({
+				'gtm.start': Date.now(),
+				event: 'gtm.js',
+			});
+
+			const firstScript = document.getElementsByTagName('script')[0];
+			const gtmScript = /** @type {HTMLScriptElement} */ (document.createElement('script'));
+			gtmScript.async = true;
+			gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-KMBVLQ7B';
+			firstScript?.parentNode?.insertBefore(gtmScript, firstScript);
+		</script>
 		<link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
 		<link rel="icon" href={withBase('/favicon.ico')} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Manrope:wght@200..800&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
 		<title>{title}</title>
 	</head>
 	<body class="relative bg-black text-white font-body antialiased overflow-x-hidden">

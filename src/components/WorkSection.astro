@@ -21,18 +21,19 @@ interface Props {
 	sectionTitle: string;
 	seeAllLink?: string;
 	cards: Card[];
+	peekCards?: boolean;
 }
 
-const { sectionTitle, seeAllLink, cards } = Astro.props;
+const { sectionTitle, seeAllLink, cards, peekCards = false } = Astro.props;
 const basePath = Astro.site ? new URL(Astro.site.href).pathname.replace(/\/?$/, '/') : '/';
 const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 const resolvedSeeAllLink = seeAllLink ? withBase(seeAllLink) : undefined;
 ---
 
-<div class="flex flex-col gap-8">
+<div class="flex flex-col gap-6 sm:gap-8">
 	<!-- Title row -->
-	<div class="flex items-center justify-between">
-		<h2 class="font-headline text-[40px] font-normal leading-[1.2]">{sectionTitle}</h2>
+	<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+		<h2 class="font-headline text-3xl font-normal leading-[1.1] sm:text-[40px] sm:leading-[1.2]">{sectionTitle}</h2>
 		{resolvedSeeAllLink && (
 			<a href={resolvedSeeAllLink} class="font-headline text-base font-semibold text-white transition hover:text-white/80">
 				See All
@@ -41,14 +42,19 @@ const resolvedSeeAllLink = seeAllLink ? withBase(seeAllLink) : undefined;
 	</div>
 
 	<!-- Cards row - horizontal scroll -->
-	<div class="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+	<div class:list={["flex gap-3 overflow-x-auto pb-2 scrollbar-hide sm:gap-4", peekCards && 'work-cards-row--peek']}>
 		{cards.map((card) => (
 			<button
 				type="button"
 				data-open-modal={card.id}
-				class="group flex w-[calc((100%-64px)/6)] min-w-[200px] shrink-0 cursor-pointer flex-col gap-4 text-left"
+				class:list={[
+					'group flex shrink-0 cursor-pointer flex-col gap-4 text-left',
+					peekCards
+						? 'work-card--peek'
+						: 'w-[calc((100%-64px)/6)] min-w-50',
+				]}
 			>
-				<div class="aspect-square w-full overflow-hidden rounded-xl bg-neutral-800">
+				<div class="aspect-square w-full overflow-hidden rounded-lg bg-neutral-800 sm:rounded-xl">
 					{card.image && (
 						<img
 							src={card.image}
@@ -58,7 +64,7 @@ const resolvedSeeAllLink = seeAllLink ? withBase(seeAllLink) : undefined;
 					)}
 				</div>
 				<div class="flex flex-col">
-					<h3 class="font-headline text-2xl font-semibold text-neutral-100">{card.title}</h3>
+					<h3 class="font-headline text-xl font-semibold text-neutral-100 sm:text-2xl">{card.title}</h3>
 				</div>
 			</button>
 		))}
@@ -92,3 +98,43 @@ const resolvedSeeAllLink = seeAllLink ? withBase(seeAllLink) : undefined;
 		});
 	});
 </script>
+
+<style>
+	.work-cards-row--peek {
+		--peek-card-count: 2.3;
+		--peek-gap-count: 2;
+	}
+
+	.work-card--peek {
+		width: calc((100% - (var(--peek-gap-count) * 1rem)) / var(--peek-card-count));
+		min-width: calc((100% - (var(--peek-gap-count) * 1rem)) / var(--peek-card-count));
+	}
+
+	@media (min-width: 640px) {
+		.work-cards-row--peek {
+			--peek-card-count: 3.3;
+			--peek-gap-count: 2;
+		}
+	}
+
+	@media (min-width: 900px) {
+		.work-cards-row--peek {
+			--peek-card-count: 4.3;
+			--peek-gap-count: 3;
+		}
+	}
+
+	@media (min-width: 1180px) {
+		.work-cards-row--peek {
+			--peek-card-count: 5.3;
+			--peek-gap-count: 4;
+		}
+	}
+
+	@media (min-width: 1344px) {
+		.work-cards-row--peek {
+			--peek-card-count: 6;
+			--peek-gap-count: 5;
+		}
+	}
+</style>
