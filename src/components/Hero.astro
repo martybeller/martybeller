@@ -1,0 +1,32 @@
+---
+interface Props {
+	backgroundImage?: string;
+	photoCredit?: string;
+}
+
+const { backgroundImage, photoCredit = 'Photo: Jon Uleis' } = Astro.props;
+---
+
+<section class="relative flex min-h-[80vh] flex-col justify-between overflow-hidden bg-cover bg-bottom pb-28 pt-0 px-12" style="background-image: url('/mb-banner-bg-v1.webp')">
+	<!-- Gradient overlay -->
+	<div class="pointer-events-none absolute inset-x-0 bottom-0 h-80 bg-gradient-to-t from-black to-transparent"></div>
+
+	<div class="relative z-10 mx-auto flex w-full max-w-[var(--container-max)] flex-1 flex-col justify-between">
+		<!-- Large headline -->
+		<h1 class="mt-6 font-headline text-[120px] font-light leading-[0.83] tracking-tight">
+			DRUMMER<br />COMPOSER
+		</h1>
+
+		<!-- Bottom info bar -->
+		<div class="flex items-end justify-between gap-8">
+			<p class="max-w-[664px] font-body text-[32px] font-normal leading-tight">
+				Grammy award winner<br />
+				Drummer for They Might Be Giants<br />
+				Composer for Film & TV
+			</p>
+			{photoCredit && (
+				<span class="shrink-0 font-body text-base text-white">{photoCredit}</span>
+			)}
+		</div>
+	</div>
+</section>

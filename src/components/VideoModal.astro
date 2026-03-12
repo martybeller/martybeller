@@ -1,0 +1,65 @@
+---
+interface Props {
+	id: string;
+	title: string;
+	youtubeId: string;
+}
+
+const { id, title, youtubeId } = Astro.props;
+---
+
+<dialog id={`modal-${id}`} class="m-auto max-w-3xl rounded-2xl border-0 bg-primary p-0 backdrop:bg-black/70">
+	<div class="relative flex flex-col">
+		<!-- Close button -->
+		<button
+			class="absolute right-4 top-4 z-20 flex h-8 w-8 items-center justify-center rounded-full text-2xl text-white/80 transition hover:text-white"
+			data-close-modal={id}
+			aria-label="Close"
+		>
+			&times;
+		</button>
+
+		<!-- Video embed -->
+		<div class="aspect-video w-full">
+			<iframe
+				data-video-modal={id}
+				class="h-full w-full rounded-t-2xl"
+				title={title}
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+				allowfullscreen
+			></iframe>
+		</div>
+
+		<!-- Title -->
+		<div class="p-6">
+			<h3 class="font-headline text-xl font-bold text-white">{title}</h3>
+		</div>
+	</div>
+</dialog>
+
+<script is:inline define:vars={{ id, youtubeId }}>
+	// Open: set iframe src to start playback
+	const dialog = document.getElementById(`modal-${id}`);
+	const iframe = dialog?.querySelector(`[data-video-modal="${id}"]`);
+
+	document.querySelectorAll(`[data-open-modal="${id}"]`).forEach((btn) => {
+		btn.addEventListener('click', () => {
+			if (iframe) iframe.src = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1`;
+			dialog?.showModal();
+		});
+	});
+
+	// Close: stop video by clearing iframe src
+	dialog?.addEventListener('close', () => {
+		if (iframe) iframe.src = '';
+	});
+
+	dialog?.addEventListener('click', (e) => {
+		if (e.target === dialog) dialog.close();
+	});
+
+	document.addEventListener('click', (e) => {
+		const closeBtn = e.target.closest(`[data-close-modal="${id}"]`);
+		if (closeBtn) dialog?.close();
+	});
+</script>

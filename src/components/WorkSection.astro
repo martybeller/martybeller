@@ -1,0 +1,91 @@
+---
+import WorkModal from './WorkModal.astro';
+import VideoModal from './VideoModal.astro';
+
+interface Track {
+	title: string;
+	url: string;
+}
+
+interface Card {
+	id: string;
+	title: string;
+	image?: string;
+	owner?: string;
+	tracks?: Track[];
+	youtubeId?: string;
+	link?: string;
+}
+
+interface Props {
+	sectionTitle: string;
+	seeAllLink?: string;
+	cards: Card[];
+}
+
+const { sectionTitle, seeAllLink, cards } = Astro.props;
+---
+
+<div class="flex flex-col gap-8">
+	<!-- Title row -->
+	<div class="flex items-center justify-between">
+		<h2 class="font-headline text-[40px] font-normal leading-[1.2]">{sectionTitle}</h2>
+		{seeAllLink && (
+			<a href={seeAllLink} class="font-headline text-base font-semibold text-white transition hover:text-white/80">
+				See All
+			</a>
+		)}
+	</div>
+
+	<!-- Cards row - horizontal scroll -->
+	<div class="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+		{cards.map((card) => (
+			<button
+				type="button"
+				data-open-modal={card.id}
+				class="group flex w-[calc((100%-64px)/6)] min-w-[200px] shrink-0 cursor-pointer flex-col gap-4 text-left"
+			>
+				<div class="aspect-square w-full overflow-hidden rounded-xl bg-neutral-800">
+					{card.image && (
+						<img
+							src={card.image}
+							alt={card.title}
+							class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+						/>
+					)}
+				</div>
+				<div class="flex flex-col">
+					<h3 class="font-headline text-2xl font-semibold text-neutral-100">{card.title}</h3>
+				</div>
+			</button>
+		))}
+	</div>
+
+	<!-- Modals -->
+	{cards.map((card) =>
+		card.youtubeId ? (
+			<VideoModal
+				id={card.id}
+				title={card.title}
+				youtubeId={card.youtubeId}
+			/>
+		) : (
+			<WorkModal
+				id={card.id}
+				title={card.title}
+				owner={card.owner || ''}
+				image={card.image || ''}
+				tracks={card.tracks || []}
+			/>
+		)
+	)}
+</div>
+
+<script is:inline>
+	document.querySelectorAll('[data-open-modal]').forEach((btn) => {
+		btn.addEventListener('click', () => {
+			const id = btn.getAttribute('data-open-modal');
+			document.getElementById(`modal-${id}`)?.showModal();
+		});
+	});
+</script>

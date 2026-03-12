@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import WorkSection from '../components/WorkSection.astro';
+import LectureSection from '../components/LectureSection.astro';
+
+// Decode WordPress HTML entities (e.g. &#8211; → –)
+function decodeEntities(str: string) {
+	return str.replace(/&#(\d+);/g, (_, code) => String.fromCharCode(Number(code)))
+		.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#039;/g, "'");
+}
+
+// WordPress API — change this base URL when the site moves to its production host
+const WP_API = 'https://martybeller.com/wp-json/wp/v2';
+
+// Fetch work posts with embedded featured media
+const workRes = await fetch(`${WP_API}/work?per_page=100&_embed&_=${Date.now()}`);
+const allWorkPosts = await workRes.json();
+
+// Filter to featured items only, take first 6
+const featuredPosts = allWorkPosts
+	.filter((post: any) => post.acf?.featured_work === true)
+	.slice(0, 6);
+
+// Resolve audio file IDs to URLs (max 2 tracks per card)
+async function resolveTrack(mediaId: number) {
+	const res = await fetch(`${WP_API}/media/${mediaId}`);
+	const media = await res.json();
+	return { title: decodeEntities(media.title?.rendered || ''), url: media.source_url || '' };
+}
+
+const composerCards = await Promise.all(
+	featuredPosts.map(async (post: any) => {
+		const media = post._embedded?.['wp:featuredmedia']?.[0];
+		const sizes = media?.media_details?.sizes;
+		const image = sizes?.medium?.source_url || sizes?.full?.source_url || '';
+
+		const trackEntries = (post.acf?.each_track || []).slice(0, 2);
+		const tracks = await Promise.all(
+			trackEntries.map((t: any) => resolveTrack(t.audio_file))
+		);
+
+		return {
+			id: String(post.id),
+			title: decodeEntities(post.title.rendered),
+			image,
+			owner: post.acf?.owner || '',
+			tracks,
+		};
+	})
+);
+
+// Fetch video posts
+const videosRes = await fetch(`${WP_API}/videos?per_page=100&_=${Date.now()}`);
+const allVideoPosts = await videosRes.json();
+
+// Filter to featured videos, take first 6
+const featuredVideos = allVideoPosts
+	.filter((post: any) => post.acf?.featured === true)
+	.slice(0, 6);
+
+const drummerCards = featuredVideos.map((post: any) => {
+	const ytId = post.acf?.youtube_video_id || '';
+	return {
+		id: `vid-${post.id}`,
+		title: decodeEntities(post.title.rendered),
+		image: ytId ? `https://img.youtube.com/vi/${ytId}/hqdefault.jpg` : '',
+		youtubeId: ytId,
+	};
+});
+---
+
+<Layout>
+	<Hero />
+
+	<section id="work" class="mx-auto flex max-w-[var(--container-max)] flex-col gap-14 px-12 py-6">
+		<WorkSection sectionTitle="Composer" seeAllLink="#" cards={composerCards} />
+		<WorkSection sectionTitle="Drummer for They Might Be Giants" seeAllLink="#" cards={drummerCards} />
+	</section>
+
+	<LectureSection backgroundImage="/mb-lecture-bg-v1.webp" />
+</Layout>
