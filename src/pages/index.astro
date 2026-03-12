@@ -73,9 +73,9 @@ const drummerCards = featuredVideos.map((post: any) => {
 <Layout>
 	<Hero />
 
-	<section id="work" class="mx-auto flex max-w-[var(--container-max)] flex-col gap-14 px-12 py-6">
-		<WorkSection sectionTitle="Composer" seeAllLink="#" cards={composerCards} />
-		<WorkSection sectionTitle="Drummer for They Might Be Giants" seeAllLink="#" cards={drummerCards} />
+	<section id="work" class="mx-auto flex max-w-max flex-col gap-14 px-12 py-6">
+		<WorkSection sectionTitle="Composer" seeAllLink="/work/" cards={composerCards} />
+		<WorkSection sectionTitle="Drummer for They Might Be Giants" seeAllLink="/work/?tab=drummer" cards={drummerCards} />
 	</section>
 
 	<LectureSection backgroundImage="/mb-lecture-bg-v1.webp" />
