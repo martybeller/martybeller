@@ -15,11 +15,14 @@ interface Props {
 const { id, title, owner, image, tracks } = Astro.props;
 ---
 
-<dialog id={`modal-${id}`} class="m-auto max-w-2xl rounded-2xl border-0 bg-primary p-0 backdrop:bg-black/70">
-	<div class="relative flex gap-0">
+<dialog id={`modal-${id}`} class="m-auto max-w-2xl overflow-hidden rounded-2xl border-0 bg-black p-0 backdrop:bg-black/70">
+	<div class="relative flex gap-0 overflow-hidden">
+		<div class="pointer-events-none absolute bottom-[-50%] left-[-50%] z-0 h-[80vw] w-[80vw] rounded-full bg-primary blur-[1000px]" aria-hidden="true">
+			<div class="absolute inset-0 rounded-full bg-noise opacity-25 mix-blend-multiply"></div>
+		</div>
 		<!-- Close button -->
 		<button
-			class="absolute right-4 top-4 z-20 flex h-8 w-8 items-center justify-center rounded-full text-2xl text-white/80 transition hover:text-white"
+			class="absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full text-2xl text-white/80 transition hover:text-white cursor-pointer"
 			data-close-modal={id}
 			aria-label="Close"
 		>
@@ -27,14 +30,14 @@ const { id, title, owner, image, tracks } = Astro.props;
 		</button>
 
 		<!-- Image -->
-		<div class="hidden w-64 shrink-0 sm:block">
+		<div class="relative z-10 hidden w-64 shrink-0 sm:block">
 			{image && (
 				<img src={image} alt={title} class="h-full w-full rounded-l-2xl object-cover" />
 			)}
 		</div>
 
 		<!-- Content -->
-		<div class="flex flex-1 flex-col gap-5 p-8">
+		<div class="relative z-10 flex flex-1 flex-col gap-5 p-8 pl-4">
 			<div class="flex flex-col gap-1">
 				<h3 class="font-headline text-3xl font-bold text-white">{title}</h3>
 				<p class="font-headline text-sm font-normal uppercase tracking-wider text-white/80">{owner}</p>

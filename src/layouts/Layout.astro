@@ -44,23 +44,25 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 		<meta name="description" content={description} />
 		<title>{title}</title>
 	</head>
-	<body class="relative bg-black text-white font-body antialiased overflow-x-hidden">
+	<body class="relative min-h-screen bg-black text-white font-body antialiased overflow-x-hidden">
 		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KMBVLQ7B"
 		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-		<!-- Decorative blurred orbs -->
-		<div class="pointer-events-none fixed bottom-[-20%] left-[-50%] z-0 h-[105vw] w-[105vw] rounded-full bg-primary blur-[1000px]" aria-hidden="true">
-			<div class="absolute inset-0 rounded-full bg-noise opacity-25 mix-blend-multiply"></div>
-		</div>
-		<div class="pointer-events-none fixed bottom-[-50%] right-[-30%] z-0 h-[105vw] w-[105vw] rounded-full bg-primary blur-[1000px]" aria-hidden="true">
-			<div class="absolute inset-0 rounded-full bg-noise opacity-25 mix-blend-multiply"></div>
-		</div>
+		
 
-		<div class="relative z-10">
+		<div class="relative z-10 overflow-clip">
+			
 			<Header />
 			<main>
 				<slot />
 			</main>
 			<Footer />
+			<!-- Decorative blurred orbs -->
+			<div class="pointer-events-none absolute bottom-[-10%] left-[-50%] z-0 h-[105vw] w-[105vw] rounded-full bg-primary blur-[1000px]" aria-hidden="true">
+				<div class="absolute inset-0 rounded-full bg-noise opacity-25 mix-blend-multiply"></div>
+			</div>
+			<div class="pointer-events-none absolute bottom-[-35%] right-[-30%] z-0 h-[105vw] w-[105vw] rounded-full bg-primary blur-[1000px]" aria-hidden="true">
+				<div class="absolute inset-0 rounded-full bg-noise opacity-25 mix-blend-multiply"></div>
+			</div>
 		</div>
 	</body>
 </html>

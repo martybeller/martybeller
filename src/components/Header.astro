@@ -3,8 +3,8 @@ const basePath = Astro.site ? new URL(Astro.site.href).pathname.replace(/\/?$/, 
 const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 ---
 
-<header class="w-full py-4 sm:py-5">
-	<nav class="relative mx-auto flex max-w-max flex-col gap-4 px-5 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
+<header class="w-full py-4 sm:py-5 px-6">
+	<nav class="relative mx-auto flex max-w-max flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
 		<div class="flex items-center justify-between gap-4">
 			<a href={withBase('/')} aria-label="Marty Beller - Home">
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 180 28" class="h-6 w-auto sm:h-7">

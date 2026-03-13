@@ -10,15 +10,20 @@ const lectureHref = withBase('/lecture/');
 const lectureBackgroundImage = backgroundImage ? withBase(backgroundImage) : undefined;
 ---
 
-<section id="lecture" class="mx-auto max-w-max px-5 sm:px-6 lg:px-12">
-	<a href={lectureHref} class="group relative block overflow-hidden rounded-xl bg-white bg-cover bg-center p-5 sm:p-6 lg:p-8" style={lectureBackgroundImage ? `background-image: url('${lectureBackgroundImage}')` : ''}>
-		<div class="relative z-10 flex min-h-[360px] flex-col justify-between gap-10 sm:min-h-[420px] sm:gap-14 lg:min-h-[520px]">
+<section id="lecture" class="px-6 relative z-10 mt-36">
+	<a href={lectureHref} class="group max-w-max mx-auto w-full min-h-80 relative block overflow-hidden rounded-xl bg-cover bg-center p-5 sm:p-6 lg:p-8" style={lectureBackgroundImage ? `background-image: url('${lectureBackgroundImage}')` : ''}>
+		<div class="relative z-10 flex flex-col justify-between gap-10 sm:gap-14">
 			<h2 class="font-headline text-5xl font-normal leading-[0.95] text-white sm:text-6xl lg:text-[72px]">
 				Guest Artist<br />Lecture
 			</h2>
-			<p class="max-w-[600px] font-body text-xl font-normal leading-tight text-white sm:text-2xl lg:text-[32px]">
-				Twists, Turns and Breakthroughs: Inside the Work of Recording, Touring & Composing
-			</p>
+			<div class="max-w-7/12">
+				<p class="font-body font-semibold leading-tight text-white text-xl sm:text-2xl lg:text-3xl">
+					Twists, Turns and Breakthroughs:
+				</p>
+				<p class="font-body text-xl font-normal leading-tight text-white sm:text-2xl lg:text-3xl">
+					Inside the Work of Recording, Touring &amp; Composing
+				</p>
+			</div>
 		</div>
 	</a>
 </section>
