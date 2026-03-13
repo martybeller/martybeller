@@ -7,24 +7,29 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 
 <Layout title="Bio — Marty Beller">
 	<!-- Hero -->
-	<section class="relative flex min-h-[44vh] flex-col justify-end overflow-hidden bg-cover bg-center px-5 pb-8 pt-26.5 sm:min-h-[50vh] sm:px-6 sm:pb-10 lg:min-h-[58vh] lg:px-12" style={`background-image: url('${withBase('/mb-lecture-bg-v1.webp')}')`}>
-		<h1 class="font-headline text-6xl font-light leading-[0.83] text-white sm:text-7xl md:text-8xl lg:text-[120px]">BIO.</h1>
+	<section class="relative flex flex-col justify-end overflow-hidden bg-cover bg-center px-6 pb-8 pt-20 sm:pb-10 sm:pt-24 sm:min-h-125 lg:min-h-[560px]" style={`background-image: url('${withBase('/mb-bio-hero-bg-v1.webp')}')`}>
+		<div class="w-full max-w-max m-auto">
+			<div class="flex flex-col gap-28">
+				<h1 class="font-headline text-6xl font-light leading-[0.83] text-white sm:text-7xl md:text-8xl lg:text-[120px]">BIO</h1>
+				<p class="text-right text-sm text-white/80">Photo: Jon Uleis</p>
+			</div>
+		</div>
 	</section>
 
 	<!-- Bio Content -->
-	<section class="px-5 pb-16 pt-12 sm:px-6 sm:pb-20 sm:pt-16 lg:px-12 lg:pb-24 lg:pt-24">
+	<section class="relative px-6 pb-4 pt-12 sm:pt-16 lg:pt-24 z-20">
 		<div class="mx-auto flex max-w-max flex-col gap-8 sm:gap-10 lg:flex-row lg:gap-12">
 			<!-- Left column -->
 			<div class="flex w-full flex-col gap-6 sm:gap-8 lg:w-1/2 lg:gap-12">
-				<p class="font-body text-xl font-normal leading-tight text-white sm:text-2xl lg:text-[32px]">Marty Beller is a GRAMMY Award-winning composer and the drummer for the iconic Alt-Rock Band They Might Be Giants, performing over 1,000 shows in 150+ cities worldwide and drumming on over 25 albums released since 2004. Marty has contributed as a songwriter and vocalist on several of the band's releases, including songs on Here Come the ABCs, Here Come the 123s, and Here Comes Science.</p>
-				<p class="font-body text-lg font-normal leading-snug text-white sm:text-xl lg:text-2xl">Marty is also a composer for Film, TV, Dance, Education, and Podcasts. Notable composing credits include: Prime Video's American Rust: Broken Justice, Showtime's American Rust Season 1, HBO's In Treatment, Netflix's Tiger King, Fox Television's Gracepoint, Showtime's Cradle of Champions, HBO's The Last Patrol, Sebastian Junger's Korengal, Bennett Miller's Emmy Award winner The Cruise, Cheyanne Kane's Isky, Douglas Kass and Roger Kass' Emptying the Skies, Todd Stephens' Another Gay Movie, Another Gay Sequel and Gypsy 83, Josh Pais' 7th Street, A&amp;E Networks' Biography of Groucho Marx, Audible's Radiant Minds Podcast, Investigation Discovery's Red Flags Podcast, Scholastic's iRead, Math 180 and Expert21 Series, truTV's Dominick Dunne's Power, Privilege and Justice, Theatreworks USA's Romeo and Juliet and more.</p>
+				<p class="font-body font-normal leading-tight text-white text-2xl md:text-3xl text-pretty">Marty Beller is a GRAMMY Award-winning composer and the drummer for the iconic Alt-Rock Band They Might Be Giants, performing over 1,000 shows in 150+ cities worldwide and drumming on over 25 albums released since 2004. Marty has contributed as a songwriter and vocalist on several of the band's releases, including songs on Here Come the ABCs, Here Come the 123s, and Here Comes Science.</p>
+				<p class="font-body text-lg font-normal leading-snug text-white md:text-xl lg:text-2xl text-pretty">Marty is also a composer for Film, TV, Dance, Education, and Podcasts. Notable composing credits include: Prime Video's American Rust: Broken Justice, Showtime's American Rust Season 1, HBO's In Treatment, Netflix's Tiger King, Fox Television's Gracepoint, Showtime's Cradle of Champions, HBO's The Last Patrol, Sebastian Junger's Korengal, Bennett Miller's Emmy Award winner The Cruise, Cheyanne Kane's Isky, Douglas Kass and Roger Kass' Emptying the Skies, Todd Stephens' Another Gay Movie, Another Gay Sequel and Gypsy 83, Josh Pais' 7th Street, A&amp;E Networks' Biography of Groucho Marx, Audible's Radiant Minds Podcast, Investigation Discovery's Red Flags Podcast, Scholastic's iRead, Math 180 and Expert21 Series, truTV's Dominick Dunne's Power, Privilege and Justice, Theatreworks USA's Romeo and Juliet and more.</p>
 			</div>
 			<!-- Right column -->
 			<div class="flex w-full flex-col gap-6 sm:gap-8 lg:w-1/2 lg:gap-10">
-				<p class="font-body text-lg font-normal leading-snug text-white sm:text-xl lg:text-2xl">Marty was the drummer on Steve Earle's Grammy-winning album Washington Square Serenade and on Jon Samson's Grammy-winning album Ageless: Songs for the Child Archetype. He has recorded and toured with Tony Award winner Stew and TNP, as well as William Shatner, Jonathan Coulton, Mike Doughty, and Ivy, among many others.</p>
-				<p class="font-body text-lg font-normal leading-snug text-white sm:text-xl lg:text-2xl">Beller was Music Director for The Total Bent by Stew and Heidi Rodewald at The Public Theater and Music Director for The Good Swimmer by Heidi Rodewald and Donna Di Novelli at Brooklyn Academy of Music.</p>
-				<p class="font-body text-lg font-normal leading-snug text-white sm:text-xl lg:text-2xl">Beller has composed and performed with international dance companies Jennifer Muller/The Works, Ephrat Asherie Dance, David Parsons Dance, Sean Curran, Ann Marie DeAngelo, Chet Walker/8and ah one, Julio Bocca/Ballet Argentino, RhythMEK, Heidi Latsky, Rebudal Dance, Alice Tierstein/Young Dancemakers, Andrew Jannetti and Dancers, Bill Hastings, Kathy Wildberger, Kelli Wicke Davis and Roger Williams University Dance.</p>
-				<p class="font-body text-lg font-normal leading-snug text-white sm:text-xl lg:text-2xl">Marty lives in Brooklyn with his wife, the literary agent Jill Grinberg, their children, Violet and Noah, and their beloved cat Linden. He is an avid tennis player, and approaches his well-being, fitness, and diet with the same energy, enthusiasm, and focus that have shaped his career.</p>
+				<p class="font-body text-lg font-normal leading-snug text-white md:text-xl lg:text-2xl text-pretty">Marty was the drummer on Steve Earle's Grammy-winning album Washington Square Serenade and on Jon Samson's Grammy-winning album Ageless: Songs for the Child Archetype. He has recorded and toured with Tony Award winner Stew and TNP, as well as William Shatner, Jonathan Coulton, Mike Doughty, and Ivy, among many others.</p>
+				<p class="font-body text-lg font-normal leading-snug text-white md:text-xl lg:text-2xl text-pretty">Beller was Music Director for The Total Bent by Stew and Heidi Rodewald at The Public Theater and Music Director for The Good Swimmer by Heidi Rodewald and Donna Di Novelli at Brooklyn Academy of Music.</p>
+				<p class="font-body text-lg font-normal leading-snug text-white md:text-xl lg:text-2xl text-pretty">Beller has composed and performed with international dance companies Jennifer Muller/The Works, Ephrat Asherie Dance, David Parsons Dance, Sean Curran, Ann Marie DeAngelo, Chet Walker/8and ah one, Julio Bocca/Ballet Argentino, RhythMEK, Heidi Latsky, Rebudal Dance, Alice Tierstein/Young Dancemakers, Andrew Jannetti and Dancers, Bill Hastings, Kathy Wildberger, Kelli Wicke Davis and Roger Williams University Dance.</p>
+				<p class="font-body text-lg font-normal leading-snug text-white md:text-xl lg:text-2xl text-pretty">Marty lives in Brooklyn with his wife, the literary agent Jill Grinberg, their children, Violet and Noah, and their beloved cat Linden. He is an avid tennis player, and approaches his well-being, fitness, and diet with the same energy, enthusiasm, and focus that have shaped his career.</p>
 			</div>
 		</div>
 	</section>

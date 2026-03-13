@@ -3,20 +3,20 @@ const basePath = Astro.site ? new URL(Astro.site.href).pathname.replace(/\/?$/, 
 const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 ---
 
-<footer id="contact" class="mx-auto mt-24 max-w-max px-6 sm:mt-32 lg:mt-44">
-	<div class="flex flex-col gap-10 sm:gap-12 lg:gap-14">
+<footer id="contact" class="relative w-full mt-24 px-6 md:mt-32">
+	<div class="w-full max-w-max mx-auto flex flex-col gap-10 sm:gap-12 lg:gap-14">
 		<!-- Contact content -->
 		<div class="flex flex-col gap-6 z-20">
 			<h2 class="font-headline text-4xl font-normal leading-tight sm:text-5xl">Contact.</h2>
 			<div class="flex max-w-max flex-col gap-8 md:flex-row md:gap-6 lg:gap-8">
 				<!-- Guest Artist Lecture contact -->
 				<div class="flex flex-1 flex-col gap-4 sm:gap-5 lg:gap-6">
-					<p class="font-headline text-xl font-normal leading-snug sm:text-2xl">For Guest Artist Lecture</p>
+					<p class="font-headline text-xl font-normal leading-snug sm:text-2xl uppercase">For Guest Artist Lecture</p>
 					<a href="mailto:MartyBeller@gmail.com" class="font-body text-xl font-semibold leading-normal transition hover:text-white/80 sm:text-2xl">MartyBeller@gmail.com</a>
 				</div>
 				<!-- Film & TV contact -->
 				<div class="flex flex-1 flex-col gap-4 sm:gap-5 lg:gap-6">
-					<p class="font-headline text-xl font-normal leading-snug sm:text-2xl">
+					<p class="font-headline text-xl font-normal leading-snug sm:text-2xl uppercase">
 						For Film &amp; TV Representation<br />Evolution Music Partners
 					</p>
 					<a href="mailto:info@empagency.com" class="font-body text-xl font-semibold leading-normal transition hover:text-white/80 sm:text-2xl">info@empagency.com</a>
