@@ -1,6 +1,7 @@
 ---
 import WorkModal from './WorkModal.astro';
 import VideoModal from './VideoModal.astro';
+import 'swiper/css';
 
 interface Track {
 	title: string;
@@ -30,7 +31,7 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 const resolvedSeeAllLink = seeAllLink ? withBase(seeAllLink) : undefined;
 ---
 
-<div class="flex flex-col gap-6 sm:gap-8 max-w-max mx-auto mt-20 z-10">
+<div class="flex w-full min-w-0 flex-col gap-6 sm:gap-8 max-w-max mx-auto mt-10 z-10">
 	<!-- Title row -->
 	<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
 		<h2 class="font-headline text-3xl font-normal leading-[1.1] sm:text-[40px] sm:leading-[1.2]">{sectionTitle}</h2>
@@ -41,33 +42,32 @@ const resolvedSeeAllLink = seeAllLink ? withBase(seeAllLink) : undefined;
 		)}
 	</div>
 
-	<!-- Cards row - horizontal scroll -->
-	<div class:list={["flex gap-3 overflow-x-auto pb-2 scrollbar-hide sm:gap-4", peekCards && 'work-cards-row--peek']}>
-		{cards.map((card) => (
-			<button
-				type="button"
-				data-open-modal={card.id}
-				class:list={[
-					'group flex shrink-0 cursor-pointer flex-col gap-4 text-left',
-					peekCards
-						? 'work-card--peek'
-						: 'w-[calc((100%-64px)/6)] min-w-50',
-				]}
-			>
-				<div class="aspect-7/10 w-full overflow-hidden rounded-lg bg-neutral-800 sm:rounded-xl">
-					{card.image && (
-						<img
-							src={card.image}
-							alt={card.title}
-							class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
-						/>
-					)}
+	<!-- Cards row - Swiper carousel -->
+	<div class="swiper work-swiper w-full min-w-0" data-work-swiper>
+		<div class="swiper-wrapper">
+			{cards.map((card) => (
+				<div class="swiper-slide">
+					<button
+						type="button"
+						data-open-modal={card.id}
+						class="group flex w-full cursor-pointer flex-col gap-4 text-left"
+					>
+						<div class="aspect-7/10 w-full overflow-hidden rounded-lg bg-neutral-800 sm:rounded-xl">
+							{card.image && (
+								<img
+									src={card.image}
+									alt={card.title}
+									class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+								/>
+							)}
+						</div>
+						<div class="flex flex-col">
+							<h3 class="font-headline text-xl font-semibold text-neutral-100 sm:text-2xl">{card.title}</h3>
+						</div>
+					</button>
 				</div>
-				<div class="flex flex-col">
-					<h3 class="font-headline text-xl font-semibold text-neutral-100 sm:text-2xl">{card.title}</h3>
-				</div>
-			</button>
-		))}
+			))}
+		</div>
 	</div>
 
 	<!-- Modals -->
@@ -90,51 +90,42 @@ const resolvedSeeAllLink = seeAllLink ? withBase(seeAllLink) : undefined;
 	)}
 </div>
 
-<script is:inline>
+<script>
+	import Swiper from 'swiper';
+
 	document.querySelectorAll('[data-open-modal]').forEach((btn) => {
 		btn.addEventListener('click', () => {
 			const id = btn.getAttribute('data-open-modal');
 			document.getElementById(`modal-${id}`)?.showModal();
 		});
 	});
+
+	document.querySelectorAll<HTMLElement>('[data-work-swiper]').forEach((el) => {
+		new Swiper(el, {
+			slidesPerView: 1.5,
+			spaceBetween: 12,
+			grabCursor: true,
+			breakpoints: {
+				525: {
+					slidesPerView: 2.5,
+					spaceBetween: 12,
+				},
+				768: {
+					slidesPerView: 3.5,
+					spaceBetween: 12,
+				},
+				1344: {
+					slidesPerView: 6,
+					spaceBetween: 12,
+				},
+			},
+		});
+	});
 </script>
 
-<style>
-	.work-cards-row--peek {
-		--peek-card-count: 2.3;
-		--peek-gap-count: 2;
-	}
-
-	.work-card--peek {
-		width: calc((100% - (var(--peek-gap-count) * 1rem)) / var(--peek-card-count));
-		min-width: calc((100% - (var(--peek-gap-count) * 1rem)) / var(--peek-card-count));
-	}
-
-	@media (min-width: 640px) {
-		.work-cards-row--peek {
-			--peek-card-count: 3.3;
-			--peek-gap-count: 2;
-		}
-	}
-
-	@media (min-width: 900px) {
-		.work-cards-row--peek {
-			--peek-card-count: 4.3;
-			--peek-gap-count: 3;
-		}
-	}
-
-	@media (min-width: 1180px) {
-		.work-cards-row--peek {
-			--peek-card-count: 5.3;
-			--peek-gap-count: 4;
-		}
-	}
-
-	@media (min-width: 1344px) {
-		.work-cards-row--peek {
-			--peek-card-count: 6;
-			--peek-gap-count: 5;
-		}
+<style is:global>
+	.work-swiper {
+		overflow: hidden;
+		position: relative;
 	}
 </style>

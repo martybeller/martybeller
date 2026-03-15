@@ -11,7 +11,9 @@ const lectureBackgroundImage = backgroundImage ? withBase(backgroundImage) : und
 ---
 
 <section id="lecture" class="px-6 relative z-10 mt-36">
-	<a href={lectureHref} class="group max-w-max mx-auto w-full min-h-80 relative block overflow-hidden rounded-xl bg-cover bg-center p-5 sm:p-6 lg:p-8" style={lectureBackgroundImage ? `background-image: url('${lectureBackgroundImage}')` : ''}>
+	<a href={lectureHref} class="group max-w-max mx-auto w-full min-h-80 relative block overflow-hidden rounded-xl p-5 sm:p-6 lg:p-8">
+		<!-- Background layer for zoom effect -->
+		<div class="absolute inset-0 bg-cover [background-position:center_15%] transition-transform duration-500 ease-out group-hover:scale-105 group-focus:scale-105" style={lectureBackgroundImage ? `background-image: url('${lectureBackgroundImage}')` : ''}></div>
 		<div class="relative z-10 flex flex-col justify-between gap-10 sm:gap-14">
 			<h2 class="font-headline text-5xl font-normal leading-[0.95] text-white sm:text-6xl lg:text-[72px]">
 				Guest Artist<br />Lecture

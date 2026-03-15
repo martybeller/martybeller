@@ -8,7 +8,7 @@ interface Props {
 const { id, title, youtubeId } = Astro.props;
 ---
 
-<dialog id={`modal-${id}`} class="m-auto max-w-3xl rounded-2xl border-0 bg-primary p-0 backdrop:bg-black/70">
+<dialog id={`modal-${id}`} class="m-auto w-10/12 max-w-3xl rounded-2xl border-0 bg-primary p-0 backdrop:bg-black/70">
 	<div class="relative flex-row gap-0 overflow-hidden">
 		<div class="pointer-events-none absolute bottom-[-50%] left-[-50%] z-0 h-[80vw] w-[80vw] rounded-full bg-primary blur-[1000px]" aria-hidden="true">
 			<div class="absolute inset-0 rounded-full bg-noise opacity-25 mix-blend-multiply"></div>
