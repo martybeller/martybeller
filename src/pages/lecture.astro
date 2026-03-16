@@ -15,38 +15,44 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 	<section class="relative z-10 px-6 pt-12 sm:pt-16 lg:pt-24">
 		<div class="mx-auto flex w-full max-w-max flex-col gap-10 lg:flex-row lg:gap-12">
 			<!-- Left column -->
-			<div class="flex w-full flex-col justify-between gap-8 lg:w-1/2 lg:gap-12">
-				<h2 class="font-body text-3xl font-medium leading-[1.12] text-white sm:text-4xl lg:text-[45px]">Twists, Turns and Breakthroughs: Inside the Work of a Recording, Touring &amp; Composing Career</h2>
-				<p class="font-body text-xl font-normal leading-tight text-white sm:text-2xl lg:text-[32px]">Marty Beller, Grammy Award-winning composer and longtime drummer for the iconic alt-rock band They Might Be Giants, brings students inside the real world of a professional musician whose career moves seamlessly between recording, touring, and scoring for the screen, on stage, in the studio, and in the creative spaces where projects come to life.</p>
+			<div class="flex w-full flex-col lg:w-1/2">
+				<h2 class="font-body text-3xl font-light leading-[1.1] text-white sm:text-4xl lg:text-5xl"><span class="font-semibold">Twists, Turns and Breakthroughs:</span><br>Inside the Work of a Recording, Touring &amp; Composing Career</h2>
+				<p class="font-body text-xl font-normal leading-tight text-white sm:text-2xl lg:text-[32px] mt-8">Marty Beller, Grammy Award-winning composer and longtime drummer for the iconic alt-rock band They Might Be Giants, brings students inside the real world of a professional musician whose career moves seamlessly between recording, touring, and scoring for the screen, on stage, in the studio, and in the creative spaces where projects come to life.</p>
 			</div>
 			<!-- Right column -->
-			<div class="flex w-full flex-col gap-6 sm:gap-8 lg:w-1/2 lg:gap-10">
-				<p class="font-body text-xl font-normal leading-tight text-white sm:text-2xl lg:text-[32px]">This 90-120 minute interactive lecture is designed for university music students and is ideal for lecture series, visiting artist programs, and music school forums.</p>
-				<p class="font-body text-lg font-normal leading-snug text-white sm:text-xl lg:text-2xl">Drawing on decades of experience drumming with They Might Be Giants and scoring for Film/TV, Marty brings students into the recording studio, onto the stage, and into vibrant creative meetings, immersing them in a whirlwind of twists, turns, and breakthroughs. Do you want this all-consuming, exhilarating lifestyle more than anything else in the world?! Yes, you do!</p>
-				<p class="font-body text-lg font-normal leading-snug text-white sm:text-xl lg:text-2xl">Students leave with a clear understanding of what a working music career looks like and a real picture of what comes next. They will have learned about real workflow, taking direction, digesting feedback, and making creative decisions, whether recording, touring, or scoring. Most importantly, students will be inspired to develop their own unique voice as musicians and collaborators.</p>
+			<div class="flex w-full flex-col gap-6 sm:gap-8 lg:w-1/2">
+				<p class="font-body text-xl font-normal leading-tight text-white sm:text-2xl lg:text-[32px] text-pretty">This 90-120 minute interactive lecture is designed for university music students and is ideal for lecture series, visiting artist programs, and music school forums.</p>
+				<p class="font-body text-lg font-normal leading-snug text-white sm:text-xl lg:text-2xl text-pretty">Drawing on decades of experience drumming with They Might Be Giants and scoring for Film/TV, Marty brings students into the recording studio, onto the stage, and into vibrant creative meetings, immersing them in a whirlwind of twists, turns, and breakthroughs. Do you want this all-consuming, exhilarating lifestyle more than anything else in the world?! Yes, you do!</p>
+				<p class="font-body text-lg font-normal leading-snug text-white sm:text-xl lg:text-2xl text-pretty">Students leave with a clear understanding of what a working music career looks like and a real picture of what comes next. They will have learned about real workflow, taking direction, digesting feedback, and making creative decisions, whether recording, touring, or scoring. Most importantly, students will be inspired to develop their own unique voice as musicians and collaborators.</p>
 			</div>
 		</div>
 	</section>
 
 	<!-- Testimonial -->
 	<section class="relative z-10 px-6 pt-12 sm:pt-16 lg:pt-24">
-		<div class="mx-auto w-full max-w-max overflow-hidden rounded-xl bg-primary/50 p-5 sm:p-6">
-			<blockquote class="flex flex-col gap-4">
-				<p class="max-w-216.75 font-accent text-xl font-medium leading-snug text-white sm:text-2xl">"Marty showed our students that a career in music can take many shapes and inspired them to pursue their own creative vision."</p>
+		<div class="mx-auto w-full max-w-max overflow-hidden rounded-xl bg-primary/70 p-5 sm:p-6">
+			<blockquote class="flex flex-col lg:flex-row gap-4 lg:gap-6">
+				<p class="relative max-w-216.75 pl-[0.7em] font-accent text-xl font-medium leading-snug text-white sm:text-2xl lg:text-balance">
+					<span aria-hidden="true" class="absolute top-0 left-1.5">&ldquo;</span>
+					Marty showed our students that a career in music can take many shapes and inspired them to pursue their own creative vision.&rdquo;
+				</p>
 				<div class="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
 					<img
 						src={withBase('/colton-dodd.webp')}
 						alt="Colton Dodd"
 						class="h-18 w-18 shrink-0 overflow-hidden rounded-full object-cover"
 					/>
-					<p class="font-accent text-base font-medium leading-tight text-white">Colton Dodd<br />Professor at Peabody Institute at Johns Hopkins University</p>
+					<div class="">
+						<p class="font-accent text-base font-bold leading-tight text-white">Colton Dodd</p>
+						<p class="font-accent text-base font-medium leading-tight text-white text-balance">Professor at Peabody Institute at Johns Hopkins University</p>
+					</div>
 				</div>
 			</blockquote>
 		</div>
 	</section>
 
 	<!-- The Rundown -->
-	<section class="relative z-10 px-6 pt-12 sm:pt-16 lg:pt-24">
+	<section class="relative z-10 px-6 pt-12 sm:pt-16 lg:pt-20">
 		<div class="mx-auto flex w-full max-w-max flex-col gap-6">
 			<h2 class="font-accent text-4xl font-medium leading-snug text-white sm:text-5xl">The Rundown</h2>
 			<div class="flex flex-col gap-10 lg:flex-row lg:gap-12">
@@ -61,7 +67,7 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 							<p class="font-body text-lg font-normal leading-snug text-neutral-300 sm:text-xl lg:text-2xl text-pretty">The moment I realized that individuality is your greatest asset.</p>
 						</div>
 					</div>
-					<hr class="border-0 border-t-2 border-dashed border-white" />
+					<hr class="border-0 border-t-1 border-dashed border-white" />
 					<!-- Item 2 -->
 					<div class="flex gap-5">
 						<span class="font-headline text-3xl font-light leading-none tracking-[2px] text-neutral-500 sm:text-[40px]">2</span>
@@ -71,7 +77,7 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 							<p class="font-body text-lg font-normal leading-snug text-neutral-300 sm:text-xl lg:text-2xl text-pretty">How I got the gig, made the most of it, and what I learned along the way.</p>
 						</div>
 					</div>
-					<hr class="border-0 border-t-2 border-dashed border-white" />
+					<hr class="border-0 border-t-1 border-dashed border-white" />
 					<!-- Item 3 -->
 					<div class="flex gap-5">
 						<span class="font-headline text-3xl font-light leading-none tracking-[2px] text-neutral-500 sm:text-[40px]">3</span>
@@ -81,7 +87,7 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 							<p class="font-body text-lg font-normal leading-snug text-neutral-300 sm:text-xl lg:text-2xl text-pretty">How to approach key creative meetings, turn adjectives and emotions into music, and deliver on the client's vision.</p>
 						</div>
 					</div>
-					<hr class="border-0 border-t-2 border-dashed border-white" />
+					<hr class="border-0 border-t-1 border-dashed border-white" />
 					<!-- Item 4 -->
 					<div class="flex gap-5">
 						<span class="font-headline text-3xl font-light leading-none tracking-[2px] text-neutral-500 sm:text-[40px]">4</span>
@@ -94,6 +100,9 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 				</div>
 				<!-- Right column: items 5–7 -->
 				<div class="flex flex-1 flex-col gap-8 lg:gap-10">
+
+					<hr class="border-0 border-t border-dashed border-white lg:hidden" />
+
 					<!-- Item 5 -->
 					<div class="flex gap-5">
 						<span class="font-headline text-3xl font-light leading-none tracking-[2px] text-neutral-500 sm:text-[40px]">5</span>
@@ -103,7 +112,7 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 							<p class="font-body text-lg font-normal leading-snug text-neutral-300 sm:text-xl lg:text-2xl text-pretty">Take direction, process feedback, trial and error. Be ready to pivot. Be inventive and musical. Make your part immediate. Serve the song.</p>
 						</div>
 					</div>
-					<hr class="border-0 border-t-2 border-dashed border-white" />
+					<hr class="border-0 border-t-1 border-dashed border-white" />
 					<!-- Item 6 -->
 					<div class="flex gap-5">
 						<span class="font-headline text-3xl font-light leading-none tracking-[2px] text-neutral-500 sm:text-[40px]">6</span>
@@ -113,7 +122,7 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 							<p class="font-body text-lg font-normal leading-snug text-neutral-300 sm:text-xl lg:text-2xl text-pretty">There is no formula, I wish there was, but these ideas have worked for me (I've got the stories to prove it).</p>
 						</div>
 					</div>
-					<hr class="border-0 border-t-2 border-dashed border-white" />
+					<hr class="border-0 border-t-1 border-dashed border-white" />
 					<!-- Item 7 -->
 					<div class="flex gap-5">
 						<span class="font-headline text-3xl font-light leading-none tracking-[2px] text-neutral-500 sm:text-[40px]">7</span>
@@ -128,7 +137,7 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 
 	<!-- Beyond the Lecture -->
 	<section class="relative z-10 px-6 pb-16 pt-12 sm:pb-20 sm:pt-16 lg:pb-24 lg:pt-24">
-		<div class="mx-auto flex max-w-max flex-col gap-6 sm:gap-8 lg:gap-10">
+		<div class="mx-auto flex max-w-max flex-col gap-6 sm:gap-8">
 			<h2 class="font-accent text-4xl font-medium leading-snug text-white sm:text-5xl">Beyond the Lecture</h2>
 			<p class="font-body text-xl font-normal leading-tight text-neutral-300 sm:text-2xl lg:text-[32px]">Marty would be genuinely excited to extend his time on campus and has designed his lecture to be flexible and adaptive. Here are some examples: Extended/Expanded Lectures, One-on-One Coaching/Mentoring, and Ensemble/Studio visits.</p>
 		</div>
