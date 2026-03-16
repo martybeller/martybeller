@@ -92,15 +92,15 @@ const drummerCards: DrummerCard[] = allVideoPosts
 		</div>
 	</section>
 
-	<section class="px-12 pb-12">
-		<div class="mx-auto flex max-w-max flex-col gap-10">
+	<section class="px-12 pb-12 relative z-10">
+		<div class="mx-auto flex max-w-max flex-col gap-10 relative z-10">
 			<div class="flex items-center gap-8 border-b border-white/10 pb-4">
 				<button
 					type="button"
 					data-tab-trigger="composer"
 					data-active-classes="border-white text-white"
 					data-inactive-classes="border-transparent text-white/50"
-					class="border-b pb-3 font-headline text-[40px] font-normal leading-[1.2] text-white"
+					class="border-b pb-3 font-headline text-[40px] font-normal leading-[1.2] text-white cursor-pointer transition hover:text-white"
 					aria-selected="true"
 				>
 					Composer
@@ -110,14 +110,14 @@ const drummerCards: DrummerCard[] = allVideoPosts
 					data-tab-trigger="drummer"
 					data-active-classes="border-white text-white"
 					data-inactive-classes="border-transparent text-white/50"
-					class="border-b border-transparent pb-3 font-headline text-[40px] font-normal leading-[1.2] text-white/50 transition hover:text-white"
+					class="border-b border-transparent pb-3 font-headline text-[40px] cursor-pointer font-normal leading-[1.2] text-white/50 transition hover:text-white"
 					aria-selected="false"
 				>
 					Drummer
 				</button>
 			</div>
 
-			<div data-tab-panel="composer" class="flex flex-col gap-8">
+			<div data-tab-panel="composer" class="relative z-10 flex flex-col gap-8">
 				<div class="flex flex-wrap gap-4">
 					{composerCards.map((card) => (
 						<button
@@ -152,7 +152,7 @@ const drummerCards: DrummerCard[] = allVideoPosts
 				))}
 			</div>
 
-			<div data-tab-panel="drummer" class="hidden flex-col gap-8">
+			<div data-tab-panel="drummer" class="hidden relative z-10 flex-col gap-8">
 				<div class="flex flex-wrap gap-4">
 					{drummerCards.map((card) => (
 						<button
