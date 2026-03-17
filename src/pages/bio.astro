@@ -8,10 +8,12 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 <Layout title="Meet Composer Marty Beller | Drummer | Grammy Award Winner" description="Marty is a composer, Grammy Award winner, and has been the drummer for They Might Be Giants since 2004">
 	<!-- Hero -->
 	<section class="relative flex flex-col overflow-hidden align-top bg-cover bg-center px-6 pb-8 pt-20 sm:pb-10 sm:pt-24 sm:min-h-125 lg:min-h-[560px]" style={`background-image: url('${withBase('/mb-bio-hero-bg-v1.webp')}')`}>
-		<div class="w-full max-w-max m-auto h-full mt-0">
-			<div class="flex flex-col gap-28">
-				<h1 class="font-headline text-6xl font-light leading-[0.83] text-white sm:text-7xl md:text-8xl lg:text-[120px]">BIO</h1>
-				<p class="text-right text-sm text-white/80">Photo: Jon Uleis</p>
+		<div class="w-full max-w-max m-auto h-full mt-64 lg:mt-0">
+			<div class="flex flex-col gap-4 lg:gap-64">
+				<h1 class="font-headline font-light leading-[0.83] tracking-tight text-6xl sm:text-7xl lg:text-8xl">
+					BIO.
+				</h1>
+				<p class="text-left lg:text-right text-sm text-white/80">Photo: Jon Uleis</p>
 			</div>
 		</div>
 	</section>
@@ -21,7 +23,7 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 		<div class="mx-auto flex max-w-max flex-col gap-8 sm:gap-10 lg:flex-row lg:gap-12">
 			<!-- Left column -->
 			<div class="flex w-full flex-col gap-6 sm:gap-8 lg:w-1/2 lg:gap-12">
-				<p class="font-body font-normal leading-tight text-white text-2xl md:text-3xl text-pretty">Marty Beller is a GRAMMY Award-winning composer and the drummer for the iconic Alt-Rock Band They Might Be Giants, performing over 1,000 shows in 150+ cities worldwide and drumming on over 25 albums released since 2004. Marty has contributed as a songwriter and vocalist on several of the band's releases, including songs on <strong>Here Come the ABCs</strong>, <strong>Here Come the 123s</strong>, and <strong>Here Comes Science</strong>.</p>
+				<p class="font-body font-normal leading-tight text-white text-2xl md:text-3xl text-pretty">Marty Beller is a GRAMMY Award-winning composer and the drummer for the iconic Alt-Rock Band <span class="whitespace-nowrap">They Might Be Giants</span>, performing over 1,000 shows in 150+ cities worldwide and drumming on over 25 albums released since 2004. Marty has contributed as a songwriter and vocalist on several of the band's releases, including songs on <strong>Here Come the ABCs</strong>, <strong>Here Come the 123s</strong>, and <strong>Here Comes Science</strong>.</p>
 				<p class="font-body text-lg font-normal leading-snug text-white md:text-xl lg:text-2xl text-pretty">Marty is also a composer for Film, TV, Dance, Education, and Podcasts. Notable composing credits include: Prime Video's <strong>American Rust: Broken Justice</strong>, Showtime's <strong>American Rust Season 1</strong>, HBO's <strong>In Treatment</strong>, Netflix's <strong>Tiger King</strong>, Fox Television's <strong>Gracepoint</strong>, Showtime's <strong>Cradle of Champions</strong>, HBO's <strong>The Last Patrol</strong>, Sebastian Junger's <strong>Korengal</strong>, Bennett Miller's Emmy Award winner <strong>The Cruise</strong>, Cheyanne Kane's <strong>Isky</strong>, Douglas Kass and Roger Kass' <strong>Emptying the Skies</strong>, Todd Stephens' <strong>Another Gay Movie</strong>, <strong>Another Gay Sequel</strong> and <strong>Gypsy 83</strong>, Josh Pais' <strong>7th Street</strong>, A&amp;E Networks' <strong>Biography of Groucho Marx</strong>, Audible's <strong>Radiant Minds</strong> Podcast, Investigation Discovery's <strong>Red Flags</strong> Podcast, Scholastic's <strong>iRead</strong>, <strong>Math 180</strong> and <strong>Expert21</strong> Series, truTV's <strong>Dominick Dunne's Power, Privilege and Justice</strong>, Theatreworks USA's <strong>Romeo and Juliet</strong> and more.</p>
 			</div>
 			<!-- Right column -->

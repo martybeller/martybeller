@@ -13,7 +13,7 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 			</a>
 			<button
 				type="button"
-				class="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white transition hover:border-white/40 hover:bg-white/10 lg:hidden"
+				class="flex h-11 w-11 items-center justify-center text-white transition hover:bg-white/10 lg:hidden"
 				aria-expanded="false"
 				aria-controls="site-menu"
 				aria-label="Toggle navigation menu"
@@ -35,7 +35,7 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 			<a href={withBase('/work/')} class="block w-full px-3 py-2 text-left font-headline text-sm text-white/90 transition hover:text-white sm:px-4 sm:text-base lg:w-auto">Music</a>
 			<a href={withBase('/lecture/')} class="block w-full px-3 py-2 text-left font-headline text-sm text-white/90 transition hover:text-white sm:px-4 sm:text-base lg:w-auto">Guest Artist Lecture</a>
 			<a href={withBase('/bio/')} class="block w-full px-3 py-2 text-left font-headline text-sm text-white/90 transition hover:text-white sm:px-4 sm:text-base lg:w-auto">Bio</a>
-			<a href="#contact" class="block w-full px-3 py-2 text-left font-headline text-sm text-white/90 transition hover:text-white sm:px-4 sm:text-base lg:w-auto">Contact</a>
+			<a href="#contact" class="block w-full px-3 py-2 text-left font-headline text-sm text-white/90 transition hover:text-white sm:px-4 sm:text-base lg:w-auto lg:rounded-[3px] lg:border lg:border-white">Contact</a>
 		</div>
 	</nav>
 </header>

@@ -56,7 +56,7 @@ const composerCards: ComposerCard[] = await Promise.all(
 	allWorkPosts.map(async (post: any) => {
 		const media = post._embedded?.['wp:featuredmedia']?.[0];
 		const sizes = media?.media_details?.sizes;
-		const image = sizes?.medium?.source_url || sizes?.full?.source_url || '';
+		const image = sizes?.full?.source_url || '';
 
 		const trackEntries = (post.acf?.each_track || []).filter((track: any) => track?.audio_file);
 		const tracks = await Promise.all(trackEntries.map((track: any) => resolveTrack(track.audio_file)));
@@ -85,22 +85,24 @@ const drummerCards: DrummerCard[] = allVideoPosts
 	});
 ---
 
-<Layout title="Work — Marty Beller">
-	<section class="px-12 pb-12 pt-[106px]">
-		<div class="mx-auto max-w-max">
-			<h1 class="font-headline text-[120px] font-light leading-[0.83] text-white">WORK.</h1>
+<Layout title="Marty Beller | Film & TV Scoring Credits | American Rust, Tiger King" description="Explore the music portfolio of Marty Beller. Featuring original scores for American Rust, In Treatment, Tiger King, and more. Expert composition for Film, TV, and Media.">
+	<section class="px-6 pb-12 pt-5 sm:pt-24 relative z-10">
+		<div class="mx-auto w-full max-w-max">
+			<h1 class="font-headline font-light leading-[0.83] tracking-tight text-6xl sm:text-7xl lg:text-8xl">
+				MUSIC.
+			</h1>
 		</div>
 	</section>
 
 	<section class="px-12 pb-12 relative z-10">
-		<div class="mx-auto flex max-w-max flex-col gap-10 relative z-10">
-			<div class="flex items-center gap-8 border-b border-white/10 pb-4">
+		<div class="mx-auto flex max-w-max flex-col gap-8 relative z-10">
+			<div class="flex items-center gap-8">
 				<button
 					type="button"
 					data-tab-trigger="composer"
-					data-active-classes="border-white text-white"
-					data-inactive-classes="border-transparent text-white/50"
-					class="border-b pb-3 font-headline text-[40px] font-normal leading-[1.2] text-white cursor-pointer transition hover:text-white"
+					data-active-classes="text-white"
+					data-inactive-classes="text-white/50"
+					class="pb-3 font-headline text-[40px] font-normal leading-[1.2] text-white cursor-pointer transition hover:text-white"
 					aria-selected="true"
 				>
 					Composer
@@ -108,9 +110,9 @@ const drummerCards: DrummerCard[] = allVideoPosts
 				<button
 					type="button"
 					data-tab-trigger="drummer"
-					data-active-classes="border-white text-white"
+					data-active-classes="text-white"
 					data-inactive-classes="border-transparent text-white/50"
-					class="border-b border-transparent pb-3 font-headline text-[40px] cursor-pointer font-normal leading-[1.2] text-white/50 transition hover:text-white"
+					class="pb-3 font-headline text-[40px] cursor-pointer font-normal leading-[1.2] text-white/50 transition hover:text-white"
 					aria-selected="false"
 				>
 					Drummer
@@ -118,19 +120,19 @@ const drummerCards: DrummerCard[] = allVideoPosts
 			</div>
 
 			<div data-tab-panel="composer" class="relative z-10 flex flex-col gap-8">
-				<div class="flex flex-wrap gap-4">
+				<div class="flex flex-wrap gap-x-4 gap-y-8">
 					{composerCards.map((card) => (
 						<button
 							type="button"
 							data-open-work-modal={card.id}
 							class="group flex min-w-[200px] basis-[calc((100%-80px)/6)] cursor-pointer flex-col gap-4 text-left"
 						>
-							<div class="aspect-square w-full overflow-hidden rounded-xl bg-neutral-800">
-								{card.image && (
+								<div class="aspect-7/10 w-full overflow-hidden rounded-lg bg-neutral-800">
+									{card.image && (
 									<img
 										src={card.image}
 										alt={card.title}
-										class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+										class="h-full w-full object-cover transition duration-300 group-hover:scale-105" loading="lazy" decoding="async"
 									/>
 								)}
 							</div>
@@ -153,18 +155,18 @@ const drummerCards: DrummerCard[] = allVideoPosts
 			</div>
 
 			<div data-tab-panel="drummer" class="hidden relative z-10 flex-col gap-8">
-				<div class="flex flex-wrap gap-4">
+				<div class="flex flex-wrap gap-x-4 gap-y-8">
 					{drummerCards.map((card) => (
 						<button
 							type="button"
 							data-open-modal={card.id}
 							class="group flex min-w-[200px] basis-[calc((100%-80px)/6)] cursor-pointer flex-col gap-4 text-left"
 						>
-							<div class="aspect-square w-full overflow-hidden rounded-xl bg-neutral-800">
+							<div class="aspect-7/10 w-full overflow-hidden rounded-lg bg-neutral-800">
 								<img
 									src={card.image}
 									alt={card.title}
-									class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+									class="h-full w-full object-cover transition duration-300 group-hover:scale-105" loading="lazy" decoding="async"
 								/>
 							</div>
 							<div class="flex flex-col gap-1">

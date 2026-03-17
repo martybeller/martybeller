@@ -35,7 +35,7 @@ const composerCards = await Promise.all(
 		const sizes = media?.media_details?.sizes;
 		const image = sizes?.medium?.source_url || sizes?.full?.source_url || '';
 
-		const trackEntries = (post.acf?.each_track || []).slice(0, 2);
+		const trackEntries = (post.acf?.each_track || []).filter((t: any) => t?.featured_track && t?.audio_file);
 		const tracks = await Promise.all(
 			trackEntries.map((t: any) => resolveTrack(t.audio_file))
 		);
@@ -78,7 +78,7 @@ const drummerCards = featuredVideos.map((post: any) => {
 
 	<section id="work" class="mx-auto flex flex-col gap-14 px-6 py-6">
 		<WorkSection sectionTitle="Composer" seeAllLink="/work/" cards={composerCards} peekCards={true} />
-		<WorkSection sectionTitle="Drummer for They Might Be Giants" seeAllLink="/work/?tab=drummer" cards={drummerCards} peekCards={true} />
+		<WorkSection sectionTitle="Drummer for <span class='whitespace-nowrap'>They Might Be Giants</span>" seeAllLink="/work/?tab=drummer" cards={drummerCards} peekCards={true} />
 	</section>
 
 	<LectureSection backgroundImage="/mb-lecture-bg-v1.webp" />

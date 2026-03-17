@@ -16,16 +16,16 @@ const heroBackgroundImage = backgroundImage
 	<!-- Gradient overlay -->
 	<div class="pointer-events-none absolute inset-x-0 bottom-0 h-80 bg-linear-to-t from-black to-transparent"></div>
 
-	<div class="relative z-10 mx-auto flex w-full max-w-max flex-1 flex-col justify-between gap-72">
+	<div class="relative z-10 mx-auto flex w-full max-w-max flex-1 flex-col justify-end lg:justify-between gap-4 lg:gap-72">
 		<!-- Large headline -->
-		<h1 class="font-headline text-6xl font-light leading-[0.83] tracking-tight sm:text-7xl md:text-8xl lg:text-[120px]">
+		<h1 class="font-headline font-light leading-[0.83] tracking-tight text-6xl sm:text-7xl lg:text-8xl">
 			DRUMMER<br />COMPOSER
 		</h1>
 
 		<!-- Bottom info bar -->
 		<div class="flex flex-col items-start gap-4 sm:gap-5 lg:flex-row lg:items-end lg:justify-between lg:gap-8">
 			<p class="max-w-166 font-body text-2xl font-normal leading-tight sm:text-2xl lg:text-3xl">
-				Grammy award winner<br>Drummer for They Might Be Giants<br>Composer for Film &amp; TV
+				Grammy award winner<br>Drummer for <span class="whitespace-nowrap">They Might Be Giants</span><br>Composer for Film &amp; TV
 			</p>
 			{photoCredit && (
 				<span class="font-body text-sm text-white/65 sm:text-base lg:shrink-0">{photoCredit}</span>
