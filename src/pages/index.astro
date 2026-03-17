@@ -11,7 +11,7 @@ function decodeEntities(str: string) {
 }
 
 // WordPress API — change this base URL when the site moves to its production host
-const WP_API = 'https://martybeller.com/wp-json/wp/v2';
+const WP_API = 'https://martybeller.mysites.io/wp-json/wp/v2';
 
 // Fetch work posts with embedded featured media
 const workRes = await fetch(`${WP_API}/work?per_page=100&_embed&_=${Date.now()}`);

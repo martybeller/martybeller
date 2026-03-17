@@ -33,7 +33,7 @@ function decodeEntities(str: string) {
 		.replace(/&#039;/g, "'");
 }
 
-const WP_API = 'https://martybeller.com/wp-json/wp/v2';
+const WP_API = 'https://martybeller.mysites.io/wp-json/wp/v2';
 
 async function resolveTrack(mediaId: number) {
 	const res = await fetch(`${WP_API}/media/${mediaId}`);
