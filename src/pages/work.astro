@@ -21,6 +21,7 @@ interface DrummerCard {
 	title: string;
 	image: string;
 	youtubeId: string;
+	startTime?: number;
 }
 
 function decodeEntities(str: string) {
@@ -71,18 +72,25 @@ const composerCards: ComposerCard[] = await Promise.all(
 	})
 );
 
-const drummerCards: DrummerCard[] = allVideoPosts
+const drummerCards: DrummerCard[] = await Promise.all(allVideoPosts
 	.filter((post: any) => post.acf?.youtube_video_id)
-	.map((post: any) => {
+	.map(async (post: any) => {
 		const ytId = post.acf?.youtube_video_id || '';
-
+		let image = `https://img.youtube.com/vi/${ytId}/hqdefault.jpg`;
+		if (post.acf?.placeholder_key_image) {
+			const res = await fetch(`${WP_API}/media/${post.acf.placeholder_key_image}`);
+			const media = await res.json();
+			const large = media?.media_details?.sizes?.large?.source_url;
+			if (large) image = large;
+		}
 		return {
 			id: `vid-${post.id}`,
 			title: decodeEntities(post.title?.rendered || ''),
-			image: `https://img.youtube.com/vi/${ytId}/hqdefault.jpg`,
+			image,
 			youtubeId: ytId,
+			startTime: post.acf?.start_time ? Number(post.acf.start_time) : undefined,
 		};
-	});
+	}));
 ---
 
 <Layout title="Marty Beller | Film & TV Scoring Credits | American Rust, Tiger King" description="Explore the music portfolio of Marty Beller. Featuring original scores for American Rust, In Treatment, Tiger King, and more. Expert composition for Film, TV, and Media.">
@@ -181,6 +189,7 @@ const drummerCards: DrummerCard[] = allVideoPosts
 						id={card.id}
 						title={card.title}
 						youtubeId={card.youtubeId}
+						startTime={card.startTime}
 					/>
 				))}
 			</div>

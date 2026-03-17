@@ -59,15 +59,23 @@ const featuredVideos = allVideoPosts
 	.filter((post: any) => post.acf?.featured === true)
 	.slice(0, 6);
 
-const drummerCards = featuredVideos.map((post: any) => {
+const drummerCards = await Promise.all(featuredVideos.map(async (post: any) => {
 	const ytId = post.acf?.youtube_video_id || '';
+	let image = ytId ? `https://img.youtube.com/vi/${ytId}/hqdefault.jpg` : '';
+	if (post.acf?.placeholder_key_image) {
+		const res = await fetch(`${WP_API}/media/${post.acf.placeholder_key_image}`);
+		const media = await res.json();
+		const large = media?.media_details?.sizes?.large?.source_url;
+		if (large) image = large;
+	}
 	return {
 		id: `vid-${post.id}`,
 		title: decodeEntities(post.title.rendered),
-		image: ytId ? `https://img.youtube.com/vi/${ytId}/hqdefault.jpg` : '',
+		image,
 		youtubeId: ytId,
+		startTime: post.acf?.start_time ? Number(post.acf.start_time) : undefined,
 	};
-});
+}));
 ---
 
 <Layout

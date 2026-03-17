@@ -15,6 +15,7 @@ interface Card {
 	owner?: string;
 	tracks?: Track[];
 	youtubeId?: string;
+	startTime?: number;
 	link?: string;
 }
 
@@ -77,6 +78,7 @@ const resolvedSeeAllLink = seeAllLink ? withBase(seeAllLink) : undefined;
 				id={card.id}
 				title={card.title}
 				youtubeId={card.youtubeId}
+				startTime={card.startTime}
 			/>
 		) : (
 			<WorkModal

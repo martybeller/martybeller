@@ -3,9 +3,10 @@ interface Props {
 	id: string;
 	title: string;
 	youtubeId: string;
+	startTime?: number;
 }
 
-const { id, title, youtubeId } = Astro.props;
+const { id, title, youtubeId, startTime } = Astro.props;
 ---
 
 <dialog id={`modal-${id}`} class="m-auto w-10/12 max-w-3xl rounded-2xl border-0 bg-primary p-0 backdrop:bg-black/70">
@@ -40,14 +41,15 @@ const { id, title, youtubeId } = Astro.props;
 	</div>
 </dialog>
 
-<script is:inline define:vars={{ id, youtubeId }}>
+<script is:inline define:vars={{ id, youtubeId, startTime }}>
 	// Open: set iframe src to start playback
 	const dialog = document.getElementById(`modal-${id}`);
 	const iframe = dialog?.querySelector(`[data-video-modal="${id}"]`);
+	const embedUrl = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1${startTime ? `&start=${startTime}` : ''}`;
 
 	document.querySelectorAll(`[data-open-modal="${id}"]`).forEach((btn) => {
 		btn.addEventListener('click', () => {
-			if (iframe) iframe.src = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1`;
+			if (iframe) iframe.src = embedUrl;
 			dialog?.showModal();
 		});
 	});
