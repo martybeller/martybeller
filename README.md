@@ -22,6 +22,7 @@ It now triggers on:
 1. Push to `main`
 2. Manual `workflow_dispatch`
 3. `repository_dispatch` with event type `wp-content-updated`
+4. A 6-hour schedule (`cron: 0 */6 * * *`) as a fallback sync
 
 ## WordPress -> GitHub Auto Redeploy
 
@@ -48,6 +49,14 @@ define('MB_GITHUB_REPO', 'martybeller/martybeller');
 ```
 
 The plugin dispatches GitHub redeploy events when relevant posts are created, updated, trashed, restored, or deleted.
+
+To avoid redundant builds during burst edits, it also debounces dispatches globally (default: 120 seconds). You can tune this by defining:
+
+```php
+define('MB_GITHUB_DISPATCH_DEBOUNCE_SECONDS', 120);
+```
+
+in `wp-config.php`.
 
 ### 3. Verify end-to-end
 

@@ -36,6 +36,10 @@ if (!defined('MB_GITHUB_POST_TYPES')) {
     define('MB_GITHUB_POST_TYPES', ['videos', 'work']);
 }
 
+if (!defined('MB_GITHUB_DISPATCH_DEBOUNCE_SECONDS')) {
+    define('MB_GITHUB_DISPATCH_DEBOUNCE_SECONDS', 120);
+}
+
 if (!function_exists('mb_should_dispatch_for_post')) {
     function mb_should_dispatch_for_post($post_id)
     {
@@ -64,11 +68,19 @@ if (!function_exists('mb_dispatch_github_redeploy')) {
             return;
         }
 
+        // Debounce all dispatches so bursty editorial activity doesn't trigger
+        // a separate build for every single save.
+        $debounce_key = 'mb_github_dispatch_debounce';
+        if (get_transient($debounce_key)) {
+            return;
+        }
+
         $cache_key = sprintf('mb_github_dispatch_%d_%s', (int) $post_id, sanitize_key($action));
         if (get_transient($cache_key)) {
             return;
         }
 
+        set_transient($debounce_key, 1, (int) MB_GITHUB_DISPATCH_DEBOUNCE_SECONDS);
         set_transient($cache_key, 1, 30);
 
         $response = wp_remote_post(
